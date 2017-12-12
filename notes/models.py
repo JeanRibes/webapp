@@ -1,3 +1,4 @@
+#-*- coding: utf-8 -*-
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 # Create your models here.
@@ -7,6 +8,7 @@ class MatiereModel(models.Model):
         verbose_name=_('Matière')
     nom_matiere = models.CharField(verbose_name=_('Matière'), max_length=255,)
     coefficient = models.DecimalField(verbose_name=_('Coefficient de la matière'), max_digits=4, decimal_places=3, default=1)
+    #moyenne = models.DecimalField(verbose_name=_('Moyenne dans la matière'), max_digits=4, decimal_places=3, default=0) inutilisé
     id = models.IntegerField(verbose_name=_('ID'), primary_key=True)
     def __str__(self):
         return str(self.nom_matiere) + ', coef. ' + str(self.coefficient)
