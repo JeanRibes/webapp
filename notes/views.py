@@ -34,20 +34,15 @@ def listeNotes(request, matiere):
                                                'newId': NotesModel.objects.latest(field_name='id').id + 1})
 
 def listeMatieres(request):
- #   Matieres = dict(MatiereModel.objects.all())
- #   for matiere in Matieres:
- #       Matieres['moyenne'] = matiere.moyenne()
     Matieres = {}
     for matiere in MatiereModel.objects.all():
         Matieres[matiere.nom_matiere] = {'nom_matiere':matiere.nom_matiere,
                          'coefficient': matiere.coefficient,
                          'moyenne': matiere.moyenne,
                          }
-   # for matiere in MatiereModel.objects.all():
-   #
-   #     Matieres['nom_matiere'] = matiere.nom_matiere
-   #     Matieres['coefficient'] = matiere.coefficient
-   #     Matieres['moyenne'] = matiere.moyenne()
+
     render(request, template_name='listeMatieres.html', context=Matieres)
-    return render(request, 'listeMatieres.html', context={'Matieres':Matieres, 'moyenneGenerale': calculMoyenne(NotesModel=NotesModel, MatiereModel=MatiereModel),
-                                                          'newId': NotesModel.objects.latest(field_name='id').id+1})
+    return render(request, 'listeMatieres.html', context={'Matieres':Matieres,
+                                                          #'moyenneGenerale': calculMoyenne(NotesModel=NotesModel, MatiereModel=MatiereModel),
+                                                          'newId': NotesModel.objects.latest(field_name='id').id+1,
+                                                          })
