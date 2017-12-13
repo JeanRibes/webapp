@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Liste des matières</title>
+</head>
+<body>
+<em>Moyenne générale de {{ moyenneGenerale }}</em>
+<h1>Liste des matières</h1>
+<ul>
+    {% for matiere, contenu in Matieres.items %}
+    <li><a href="{{ matiere }}">{{ matiere }}</a> :{{ contenu.moyenne }} de moyenne, coef. {{ contenu.coefficient }}
+    </li>
+    {% endfor %}
+</ul>
+ <a href="http://192.168.22.2:8000/admin/notes/notesmodel/add/?id={{ newId }}">Ajouter note</a>
+</body>
+</html>

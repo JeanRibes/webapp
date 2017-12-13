@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Liste des notes</title>
+</head>
+<body>
+<h1>Notes de {{ matiere.nom_matiere }}</h1>
+<b>moyenne de {{ matiere.moyenne }}</b>
+<ul>
+{% for note in Notes %}
+    <li>{{ note.typenote }} {{ note.nom }} : {{ note.note }}/20, coef. {{ note.coef }}
+        <p>{{ note.desc }}</p> <i>{{ note.date }}</i>
+    </li>
+{% endfor %}
+<a href="http://192.168.22.2:8000/admin/notes/notesmodel/add/?id={{ newId }}">Ajouter note</a>
+</body>
+</html>
