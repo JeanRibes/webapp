@@ -29,7 +29,7 @@ ALLOWED_HOSTS = [
         '192.168.22.1',
         '192.168.22.2',
         '0.0.0.0',
-        '0.0.0.0:8000',
+        '127.0.0.1',
         ]
 
 
@@ -46,6 +46,13 @@ INSTALLED_APPS = [
     'rest_framework',
     'api',
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAdminUser',
+    ],
+    'PAGE_SIZE': 10
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
