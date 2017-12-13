@@ -30,6 +30,7 @@ ALLOWED_HOSTS = [
         '192.168.22.2',
         '0.0.0.0',
         '127.0.0.1',
+    'localhost',
         ]
 
 
@@ -48,10 +49,13 @@ INSTALLED_APPS = [
 ]
 
 REST_FRAMEWORK = {
+'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    ),
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.IsAdminUser',
     ],
-    'PAGE_SIZE': 10
 }
 
 MIDDLEWARE = [

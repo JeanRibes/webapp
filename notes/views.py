@@ -40,8 +40,8 @@ def listeMatieres(request):
     Matieres = {}
     for matiere in MatiereModel.objects.all():
         Matieres[matiere.nom_matiere] = {'nom_matiere':matiere.nom_matiere,
-                         'coefficient':matiere.coefficient,
-                         'moyenne':matiere.moyenne(),
+                         'coefficient': matiere.coefficient,
+                         'moyenne': matiere.moyenne,
                          }
    # for matiere in MatiereModel.objects.all():
    #

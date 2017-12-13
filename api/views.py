@@ -1,13 +1,14 @@
-from django.http import HttpResponse
-from django.shortcuts import render
-from rest_framework.decorators import api_view, detail_route
-from rest_framework.views import APIView
 from rest_framework import viewsets
-from api.serializers import UserSerializer
-from django.contrib.auth.models import User
+from api.serializers import NotesSerializer, MatiereSerializer
+from notes.models import NotesModel, MatiereModel
+
 
 # Create your views here.
+class NotesViewSet(viewsets.ModelViewSet):
+    queryset = NotesModel.objects.all()
+    serializer_class = NotesSerializer
 
-class UserViewSet(viewsets.ModelViewSet):
-	queryset = User.objects.all().order_by('-date_joined')
-	serializer_class = UserSerializer
+
+class MatiereViewSet(viewsets.ModelViewSet):
+    queryset = MatiereModel.objects.all()
+    serializer_class = MatiereSerializer

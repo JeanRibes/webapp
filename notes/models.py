@@ -10,6 +10,7 @@ class MatiereModel(models.Model):
     nom_matiere = models.CharField(verbose_name=_('Matière'), max_length=255,)
     coefficient = models.DecimalField(verbose_name=_('Coefficient de la matière'), max_digits=4, decimal_places=3, default=1)
     #moyenne = models.DecimalField(verbose_name=_('Moyenne dans la matière'), max_digits=4, decimal_places=3, default=0) inutilisé
+    @property
     def moyenne(self):
         notes = list(NotesModel.objects.filter(matiere=self))
         somme, n = 0, 0
