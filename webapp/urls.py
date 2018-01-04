@@ -23,5 +23,6 @@ urlpatterns = [
     url(r'^api/', include('api.urls')),
     url(r'^notes/', include('notes.urls')),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    url(r'^scolinfo/', include('scolinfo.urls')),
     url(r'^', views.index.as_view(), name='index')
 ]

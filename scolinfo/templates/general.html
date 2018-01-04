@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue d'ensemble</title>
+</head>
+<body>
+<ul>
+{% for ue in data %}
+    <li>
+        <h4>{{ ue.nom }}, coef. {{ ue.coef }}, moyenne de {{ ue.moyenne }}</h4>
+        Liste des ECs :
+        <ul>
+            {% for ec in ue.ECs %}
+                <li>
+                <h5><{{ ec.nom }}, moyenne de {{ ec.moyenne }}/h5>
+                </li>
+            {% endfor %}
+        </ul>
+    </li>
+{% endfor %}
+</ul>
+</body>
+</html>

@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'notes',
     'rest_framework',
     'api',
+    'scolinfo',
 ]
 
 REST_FRAMEWORK = {
