@@ -8,4 +8,7 @@ scolinfoRouter.register(r'ie', IEviewset)
 urlpatterns = [
     url(r'^', include(scolinfoRouter.urls)),
     url(r'^tout', Scolinfo.general),
+    url(r'^ec/(?P<ue>[0-9]+)/$', ECviewset.get),
+    url(r'^ie/(?P<ue>[0-9]+)/(?P<ec>[0-9]+)/$'),
 ]
+        
