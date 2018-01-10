@@ -41,6 +41,7 @@ class ECmodel(models.Model):
     coef_ec = models.DecimalField(verbose_name=_('Coefficient de l\'E.C.'), max_digits=4, decimal_places=2, default=1)
     desc = models.TextField(verbose_name=_('Description de l\'E.C.'))
     UE = models.ForeignKey(UEmodel, on_delete=models.CASCADE)  # pareil, passer à SET_NULL ou autre
+    prof = models.CharField(verbose_name=_('Nom du professeur'), max_length=255)
 
     @property
     def moyenneEC(self):
@@ -65,6 +66,7 @@ class IEmodel(models.Model):
     coef_ie = models.DecimalField(max_digits=4, decimal_places=2, default=1)
     EC = models.ForeignKey(ECmodel,
                            on_delete=models.CASCADE)  # faudrait mettre SET à la place de CASCADE, pour éviter de perdre des notes si on supprime une EC
-
+    appreciation = models.TextField(verbose_name=_('Appréciation'))
+    desc = models.TextField(verbose_name=_('Descritpion du contrôle'))
     def __str__(self):
         return "#" + str(self.id) + self.nom_ie + ", " + str(self.note) + "/20"
