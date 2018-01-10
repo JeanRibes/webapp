@@ -36,14 +36,12 @@ class UEviewset(viewsets.ModelViewSet):
 class ECviewset(viewsets.ModelViewSet):
     queryset = ECmodel.objects.all()
     serializer_class = ECserializer
-    def get(self, request, pk):  #est-ce qu'on a le droit d'utiliser la PK d'un autre modèle
-        queryset = ECviewset.objects.filter(UE=pk)
-        serializer_class = ECserializer
-
+    def get(request, ue):
+        return ECmodel.objects.filter(UE=ue)
 class IEviewset(viewsets.ModelViewSet):
     queryset = IEmodel.objects.all()
     serializer_class = IEserializer
     @detail_route(methods=['get'])
-    def get(self, request, ue, ec):
+    def get(request, ue, ec):
         queryset = IEviewset.objects.filter(UE=ue, EC=ec)
         serializer_class = IEserializer
