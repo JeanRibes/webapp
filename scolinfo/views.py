@@ -5,6 +5,7 @@ from .models import *
 from django.http import HttpResponse
 from collections import defaultdict
 import json
+from rest_framework.decorators import detail_route
 # Create your views here.
 
 class Scolinfo:
@@ -35,7 +36,14 @@ class UEviewset(viewsets.ModelViewSet):
 class ECviewset(viewsets.ModelViewSet):
     queryset = ECmodel.objects.all()
     serializer_class = ECserializer
+    def get(self, request, pk):  #est-ce qu'on a le droit d'utiliser la PK d'un autre modèle
+        queryset = ECviewset.objects.filter(UE=pk)
+        serializer_class = ECserializer
 
 class IEviewset(viewsets.ModelViewSet):
     queryset = IEmodel.objects.all()
     serializer_class = IEserializer
+    @detail_route(methods=['get'])
+    def get(self, request, ue, ec):
+        queryset = IEviewset.objects.filter(UE=ue, EC=ec)
+        serializer_class = IEserializer
